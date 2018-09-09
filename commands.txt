@@ -19,6 +19,7 @@ sudo apt-get install node-less
 STEP 5
 sudo apt-get install python-software-properties *** there will be a problem with this message "E: Package 'python-software-properties' has no installation candidate" with Ubuntu 18.04
 To solve it use next line
+sudo apt install software-properties-common
 sudo apt --fix-broken install python-pycurl python-apt
 if you don't have VIM, install it using 
 sudo apt-get install vim
@@ -30,7 +31,7 @@ sudo apt-get update
 sudo apt-get install postgresql-9.6
 STEP 6
 Create Database user for Odoo
-sudo su postgrescd
+sudo su postgres
 cd
 createuser -s odoo
 createuser -s ubuntu_user_name (samuta)
@@ -86,9 +87,18 @@ addons_path = /opt/odoo/addons,/opt/odoo/odoo/addons
 
 ---------------------------------------------------
 
-sudo chown odoo: /etc/odoo.conf
+sudo chown odoo: /etc/odoo11.conf
 STEP 12
 sudo apt-get -f install
+** Need to install libpng12-0 ***
+by opening sources.list
+sudo nano /etc/apt/sources.list
+and adding next line into it
+deb http://security.ubuntu.com/ubuntu xenial-security main 
+then 
+sudo apt-get update
+after that
+sudo apt-get install libpng12-0 
 sudo wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
 sudo dpkg -i wkhtmltox-0.12.1_linux-trusty-amd64.deb
 sudo cp /usr/local/bin/wkhtmltoimage /usr/bin/wkhtmltoimage
